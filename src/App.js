@@ -10,7 +10,7 @@ import { initializeApp } from "firebase/app";
 
 function App() {
 
-  let appCheckTokenResponse;
+  let appCheckTokenResponse = '';
   const reCaptchaV3SiteKet = "6LdFbAkmAAAAAAvz0nbcL99F_l4wzeCRz6K4AttP"
   // ********************************************************************************
   // ******************* Change your firebase configuration here. *******************
@@ -39,20 +39,25 @@ function App() {
       return;
     }
     
-    console.log("appCheckTokenResponse TOKEN :: => ",appCheckTokenResponse.token);
+    console.log("appCheckTokenResponse TOKEN :: => ",JSON.stringify(appCheckTokenResponse, null, 4));
   };
 
   const verifyAppCheckToken = async () => {
-    const bearer = "Bearer "
-    const response = await fetch("http://localhost:3001/authorization/appcheck", {
-      method: "post",
-      headers: {
-        "Authorization": bearer.concat("", appCheckTokenResponse.token),
-        "Content-Type": "application/json",
-      },
-    });
-    const text = await response.json();
-    console.log("response Verify AppCheck Token from API => ", JSON.stringify(text, null, 4));
+
+    if (appCheckTokenResponse !== '') {
+      const bearer = "Bearer "
+      const response = await fetch("http://localhost:3001/authorization/appcheck", {
+        method: "post",
+        headers: {
+          "Authorization": bearer.concat("", appCheckTokenResponse.token),
+          "Content-Type": "application/json",
+        },
+      });
+      const text = await response.json();
+      console.log("response Verify AppCheck Token from API => ", JSON.stringify(text, null, 4));
+    } else {
+      console.log("Not Call API Verify AppCheck Token Because App Check Token Empty!");
+    }
   }
 
   return (
