@@ -5,11 +5,16 @@
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
+    <meta name="description" content="Web site created using create-react-app" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <script type="text/jsx" src="https://www.google.com/recaptcha/api.js"></script>
+    <script type="text/jsx" defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js" ></script>
+
+    <script type="text/jsx" defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js" ></script>
+    <script type="text/jsx" defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+    <script type="text/jsx" src="https://www.gstatic.com/firebasejs/9.0.0-beta.7/firebase-app-check-compat.js"></script>
+
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -40,4 +45,6 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
+
+  <script type="text/jsx" defer src="./init-firebase.js"></script>
 </html>
